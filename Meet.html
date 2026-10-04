@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meet Sir Himanshu | Tabela</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+html{
+    width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#06120b;
+    color:white;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#16a34a;
+    filter:blur(150px);
+    opacity:.14;
+    top:-180px;
+    left:-180px;
+    border-radius:50%;
+    animation:glowOne 10s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#22c55e;
+    filter:blur(150px);
+    opacity:.10;
+    right:-180px;
+    bottom:-180px;
+    border-radius:50%;
+    animation:glowTwo 12s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+@keyframes glowOne{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(250px,180px);
+    }
+
+}
+
+@keyframes glowTwo{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(-230px,-180px);
+    }
+
+}
+
+
+/* =====================================================
+   CUSTOM CURSOR
+===================================================== */
+
+.cursor{
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:#86efac;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:99999;
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 10px #22c55e,
+        0 0 25px #22c55e,
+        0 0 45px #16a34a;
+
+    transition:
+        width .2s ease,
+        height .2s ease;
+}
+
+.cursor-ring{
+    position:fixed;
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(134,239,172,.7);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:99998;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .25s ease,
+        height .25s ease,
+        border .25s ease,
+        background .25s ease;
+}
+
+.cursor-trail{
+    position:fixed;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    pointer-events:none;
+
+    z-index:99990;
+
+    transform:translate(-50%,-50%);
+
+    opacity:.4;
+}
+
+.cursor.hover{
+    width:18px;
+    height:18px;
+    background:#bbf7d0;
+}
+
+.cursor-ring.hover{
+    width:60px;
+    height:60px;
+
+    border:1px solid #4ade80;
+
+    background:rgba(34,197,94,.08);
+}
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+.loader{
+    position:fixed;
+    inset:0;
+
+    background:#06120b;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:999999;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-circle{
+    width:70px;
+    height:70px;
+
+    border:3px solid rgba(255,255,255,.1);
+
+    border-top:3px solid #22c55e;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    box-shadow:
+        0 0 30px rgba(34,197,94,.4);
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav{
+    position:fixed;
+
+    top:15px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:94%;
+    max-width:1250px;
+
+    padding:14px 20px;
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-radius:18px;
+
+    z-index:1000;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.25);
+}
+
+
+/* LOGO */
+
+.logo{
+    flex-shrink:0;
+
+    color:#86efac;
+
+    text-decoration:none;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+}
+
+.logo:hover{
+    color:#bbf7d0;
+
+    text-shadow:
+        0 0 15px #22c55e;
+}
+
+
+/* NAVIGATION SCROLLER */
+
+.nav-scroll{
+    flex:1;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    scrollbar-width:none;
+}
+
+.nav-scroll::-webkit-scrollbar{
+    display:none;
+}
+
+
+nav ul{
+    list-style:none;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:24px;
+
+    min-width:max-content;
+}
+
+nav li{
+    flex-shrink:0;
+}
+
+nav a{
+    color:#ddd;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    transition:.3s;
+
+    position:relative;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0;
+    height:2px;
+
+    background:#4ade80;
+
+    box-shadow:
+        0 0 10px #22c55e;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#86efac;
+
+    text-shadow:
+        0 0 15px #22c55e;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100svh;
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:
+        130px 25px
+        90px;
+
+    position:relative;
+}
+
+
+.badge{
+
+    padding:9px 18px;
+
+    border:
+        1px solid
+        rgba(134,239,172,.3);
+
+    border-radius:50px;
+
+    background:
+        rgba(34,197,94,.08);
+
+    color:#86efac;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    margin-bottom:30px;
+
+    animation:
+        fadeUp 1s ease forwards;
+}
+
+
+.animated-title{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    perspective:800px;
+}
+
+
+.word{
+
+    display:inline-block;
+
+    font-size:
+        clamp(45px,8vw,100px);
+
+    font-weight:1000;
+
+    line-height:1;
+
+    opacity:0;
+
+    animation:
+        titleIn
+        1s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+
+.meet{
+    animation-delay:.2s;
+}
+
+
+.sir{
+
+    color:#86efac;
+
+    animation-delay:.4s;
+}
+
+
+.himanshu{
+
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e,
+            #bbf7d0,
+            #16a34a,
+            #86efac
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        titleIn
+        1s
+        cubic-bezier(.16,1,.3,1)
+        .6s
+        forwards,
+
+        gradientMove
+        4s
+        linear
+        infinite;
+}
+
+
+@keyframes titleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(80px)
+            rotateX(-70deg)
+            scale(.7);
+
+        filter:blur(15px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotateX(0)
+            scale(1);
+
+        filter:blur(0);
+    }
+
+}
+
+
+@keyframes gradientMove{
+
+    to{
+        background-position:
+            300% center;
+    }
+
+}
+
+
+.hero p{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin-top:35px;
+
+    color:#aaa;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    opacity:0;
+
+    animation:
+        fadeUp
+        1s
+        ease
+        1s
+        forwards;
+}
+
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   SCROLL INDICATOR
+===================================================== */
+
+.scroll{
+
+    position:absolute;
+
+    bottom:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:9px;
+
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+
+.scroll-arrow{
+
+    width:20px;
+    height:30px;
+
+    border:
+        1px solid
+        #4ade80;
+
+    border-radius:15px;
+
+    position:relative;
+}
+
+
+.scroll-arrow::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:4px;
+    height:7px;
+
+    background:#4ade80;
+
+    border-radius:4px;
+
+    left:7px;
+    top:5px;
+
+    animation:
+        scrollMove
+        1.5s
+        infinite;
+}
+
+
+@keyframes scrollMove{
+
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(12px);
+        opacity:0;
+    }
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:
+        120px 30px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+
+.photo-area{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:500px;
+}
+
+
+.photo-ring{
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border:
+        1px solid
+        rgba(74,222,128,.25);
+
+    border-radius:50%;
+
+    animation:
+        rotateRing
+        15s
+        linear
+        infinite;
+}
+
+
+.photo-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    background:#4ade80;
+
+    border-radius:50%;
+
+    top:30px;
+    left:50%;
+
+    box-shadow:
+        0 0 20px #22c55e;
+}
+
+
+.photo-ring2{
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    border:
+        1px dashed
+        rgba(74,222,128,.15);
+
+    border-radius:50%;
+
+    animation:
+        rotateRingReverse
+        20s
+        linear
+        infinite;
+}
+
+
+@keyframes rotateRing{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+@keyframes rotateRingReverse{
+
+    to{
+        transform:rotate(-360deg);
+    }
+
+}
+
+
+.profile-photo{
+
+    width:340px;
+    height:430px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    position:relative;
+
+    z-index:2;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        0 0 40px rgba(34,197,94,.12);
+
+    transition:.5s;
+}
+
+
+.profile-photo:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.6),
+        0 0 60px rgba(34,197,94,.3);
+}
+
+
+.section-label{
+
+    color:#4ade80;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+}
+
+
+.profile h2{
+
+    font-size:50px;
+
+    margin-bottom:25px;
+}
+
+
+.profile h2 span{
+    color:#86efac;
+}
+
+
+.profile p{
+
+    color:#aaa;
+
+    line-height:1.9;
+
+    margin-bottom:18px;
+
+    font-size:16px;
+}
+
+
+/* =====================================================
+   VISION
+===================================================== */
+
+.vision{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:
+        80px 30px
+        120px;
+
+    text-align:center;
+}
+
+
+.vision h2{
+
+    font-size:48px;
+
+    margin-bottom:15px;
+}
+
+
+.vision-sub{
+
+    color:#888;
+
+    margin-bottom:60px;
+}
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+
+.card{
+
+    padding:35px 25px;
+
+    min-height:210px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:22px;
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s;
+}
+
+
+.card:hover{
+
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(74,222,128,.5);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.3);
+
+    background:
+        rgba(34,197,94,.08);
+}
+
+
+.icon{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+}
+
+
+.card h3{
+
+    margin-bottom:12px;
+}
+
+
+.card p{
+
+    color:#888;
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values{
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:
+        50px 30px
+        120px;
+}
+
+
+.value{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.1);
+
+    transition:.3s;
+}
+
+
+.value:hover{
+
+    padding-left:15px;
+
+    border-color:#22c55e;
+}
+
+
+.value-number{
+
+    color:#4ade80;
+
+    font-size:14px;
+}
+
+
+.value h3{
+
+    font-size:25px;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+        100px 30px;
+
+    text-align:center;
+}
+
+
+.quote-text{
+
+    font-size:
+        clamp(25px,4vw,45px);
+
+    line-height:1.4;
+
+    font-weight:700;
+}
+
+
+.quote-author{
+
+    margin-top:30px;
+
+    color:#4ade80;
+
+    letter-spacing:3px;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+
+    width:100%;
+
+    text-align:center;
+
+    padding:
+        100px 25px;
+
+    background:
+        rgba(34,197,94,.04);
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+
+.cta h2{
+
+    font-size:45px;
+
+    margin-bottom:25px;
+}
+
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+
+.btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:50px;
+
+    padding:
+        15px 28px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+
+.btn-primary{
+
+    background:#22c55e;
+
+    color:#031008;
+
+    box-shadow:
+        0 0 25px
+        rgba(34,197,94,.25);
+}
+
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 10px 40px
+        rgba(34,197,94,.45);
+}
+
+
+.btn-secondary{
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.btn-secondary:hover{
+
+    background:
+        rgba(255,255,255,.1);
+
+    transform:
+        translateY(-5px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#666;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(50px);
+
+    transition:
+        1s ease;
+}
+
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:950px){
+
+    nav{
+
+        width:96%;
+
+        padding:
+            13px 16px;
+
+        gap:18px;
+    }
+
+
+    nav ul{
+
+        gap:18px;
+    }
+
+
+    nav a{
+
+        font-size:13px;
+    }
+
+
+    .profile{
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+
+        text-align:center;
+    }
+
+
+    .photo-area{
+
+        min-height:470px;
+    }
+
+
+    .cards{
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .profile h2{
+
+        font-size:42px;
+    }
+
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media(max-width:600px){
+
+    /* Keep cursor effects hidden on touch devices */
+
+    body{
+        cursor:auto;
+    }
+
+    .cursor,
+    .cursor-ring,
+    .cursor-trail{
+        display:none;
+    }
+
+
+    /* NAVIGATION */
+
+    nav{
+
+        top:8px;
+
+        width:
+            calc(100% - 16px);
+
+        padding:
+            10px 12px;
+
+        gap:13px;
+
+        border-radius:15px;
+    }
+
+
+    .logo{
+
+        font-size:17px;
+
+        letter-spacing:2px;
+    }
+
+
+    .nav-scroll{
+
+        min-width:0;
+    }
+
+
+    nav ul{
+
+        justify-content:flex-start;
+
+        gap:18px;
+    }
+
+
+    nav a{
+
+        font-size:12px;
+    }
+
+
+    nav a::after{
+
+        bottom:-4px;
+
+        height:1px;
+    }
+
+
+    /* HERO */
+
+    .hero{
+
+        min-height:100svh;
+
+        padding:
+            120px 16px
+            75px;
+    }
+
+
+    .badge{
+
+        font-size:8px;
+
+        letter-spacing:
+            1.2px;
+
+        padding:
+            8px 12px;
+
+        margin-bottom:24px;
+
+        max-width:100%;
+
+        white-space:nowrap;
+    }
+
+
+    .animated-title{
+
+        gap:7px;
+
+        padding:
+            0 5px;
+    }
+
+
+    .word{
+
+        font-size:
+            clamp(
+                34px,
+                11vw,
+                53px
+            );
+    }
+
+
+    .hero p{
+
+        max-width:340px;
+
+        font-size:14px;
+
+        line-height:1.7;
+
+        margin-top:25px;
+    }
+
+
+    .scroll{
+
+        bottom:18px;
+    }
+
+
+    /* PROFILE */
+
+    .profile{
+
+        padding:
+            75px 18px;
+
+        gap:40px;
+    }
+
+
+    .photo-area{
+
+        min-height:
+            min(105vw,390px);
+    }
+
+
+    .profile-photo{
+
+        width:
+            min(76vw,290px);
+
+        height:
+            min(98vw,370px);
+
+        border-radius:20px;
+    }
+
+
+    .photo-ring{
+
+        width:
+            min(84vw,320px);
+
+        height:
+            min(84vw,320px);
+    }
+
+
+    .photo-ring2{
+
+        width:
+            min(92vw,350px);
+
+        height:
+            min(92vw,350px);
+    }
+
+
+    .section-label{
+
+        font-size:10px;
+
+        letter-spacing:2px;
+
+        margin-bottom:12px;
+    }
+
+
+    .profile h2{
+
+        font-size:34px;
+
+        line-height:1.2;
+
+        margin-bottom:20px;
+    }
+
+
+    .profile p{
+
+        font-size:14px;
+
+        line-height:1.75;
+
+        margin-bottom:15px;
+    }
+
+
+    /* VISION */
+
+    .vision{
+
+        padding:
+            60px 18px
+            80px;
+    }
+
+
+    .vision h2{
+
+        font-size:34px;
+
+        line-height:1.2;
+    }
+
+
+    .vision-sub{
+
+        font-size:14px;
+
+        margin-bottom:35px;
+    }
+
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+
+    .card{
+
+        min-height:auto;
+
+        padding:
+            28px 20px;
+
+        border-radius:18px;
+    }
+
+
+    .card:active{
+
+        transform:
+            scale(.98);
+    }
+
+
+    .icon{
+
+        font-size:34px;
+
+        margin-bottom:14px;
+    }
+
+
+    .card h3{
+
+        font-size:18px;
+    }
+
+
+    .card p{
+
+        font-size:13px;
+    }
+
+
+    /* VALUES */
+
+    .values{
+
+        padding:
+            40px 20px
+            80px;
+    }
+
+
+    .value{
+
+        padding:20px 0;
+    }
+
+
+    .value h3{
+
+        font-size:19px;
+    }
+
+
+    .value-number{
+
+        font-size:12px;
+    }
+
+
+    /* QUOTE */
+
+    .quote{
+
+        padding:
+            70px 20px;
+    }
+
+
+    .quote-text{
+
+        font-size:24px;
+
+        line-height:1.5;
+    }
+
+
+    .quote-author{
+
+        font-size:11px;
+
+        letter-spacing:2px;
+
+        margin-top:22px;
+    }
+
+
+    /* CTA */
+
+    .cta{
+
+        padding:
+            70px 18px;
+    }
+
+
+    .cta h2{
+
+        font-size:32px;
+
+        line-height:1.2;
+
+        margin-bottom:25px;
+    }
+
+
+    .buttons{
+
+        width:100%;
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+
+
+    .btn{
+
+        width:100%;
+
+        min-height:52px;
+
+        font-size:13px;
+    }
+
+
+    footer{
+
+        padding:
+            28px 15px;
+
+        font-size:11px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+    nav{
+
+        padding:
+            9px 10px;
+
+        gap:10px;
+    }
+
+
+    .logo{
+
+        font-size:15px;
+    }
+
+
+    nav ul{
+
+        gap:15px;
+    }
+
+
+    nav a{
+
+        font-size:11px;
+    }
+
+
+    .word{
+
+        font-size:32px;
+    }
+
+
+    .badge{
+
+        font-size:7px;
+
+        letter-spacing:1px;
+    }
+
+
+    .profile-photo{
+
+        width:245px;
+
+        height:315px;
+    }
+
+
+    .profile h2{
+
+        font-size:30px;
+    }
+
+
+    .vision h2{
+
+        font-size:30px;
+    }
+
+
+    .cta h2{
+
+        font-size:29px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor"></div>
+
+<div class="cursor-ring"></div>
+
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+<div class="cursor-trail"></div>
+
+
+<!-- =====================================================
+     LOADER
+===================================================== -->
+
+<div class="loader">
+
+    <div class="loader-circle"></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+        TABELA
+    </a>
+
+
+    <div class="nav-scroll">
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="cows.html">
+                    Cows
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="farm.html">
+                    Farm
+                </a>
+            </li>
+
+            <li>
+                <a href="sir-himanshu.html">
+                    Meet Sir
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="badge">
+
+        THE PERSON BEHIND TABELA
+
+    </div>
+
+
+    <div class="animated-title">
+
+        <span class="word meet">
+            MEET
+        </span>
+
+        <span class="word sir">
+            SIR
+        </span>
+
+        <span class="word himanshu">
+            HIMANSHU
+        </span>
+
+    </div>
+
+
+    <p>
+
+        Meet the person behind the vision,
+        dedication and values that shape
+        our Tabela.
+
+    </p>
+
+
+    <div class="scroll">
+
+        SCROLL
+
+        <div class="scroll-arrow"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section class="profile reveal">
+
+
+    <div class="photo-area">
+
+
+        <div class="photo-ring"></div>
+
+        <div class="photo-ring2"></div>
+
+
+        <img
+            src="h2.png"
+            class="profile-photo"
+            alt="Sir Himanshu"
+        >
+
+
+    </div>
+
+
+    <div>
+
+
+        <div class="section-label">
+
+            ABOUT SIR HIMANSHU
+
+        </div>
+
+
+        <h2>
+
+            Meet
+            <span>
+                Sir Himanshu
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Sir Himanshu is the person behind
+            the vision of this Tabela. His approach
+            is built around care, responsibility
+            and respect for animals.
+
+        </p>
+
+
+        <p>
+
+            For him, a Tabela is more than simply
+            a place where cattle are kept. It is a
+            place where cleanliness, quality and
+            dedication come together.
+
+        </p>
+
+
+        <p>
+
+            His vision is to create a responsible
+            environment where traditional values
+            and modern practices work together
+            for better animal care.
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VISION
+===================================================== -->
+
+<section class="vision">
+
+
+    <div class="section-label">
+
+        OUR APPROACH
+
+    </div>
+
+
+    <h2>
+
+        More Than A Tabela
+
+    </h2>
+
+
+    <p class="vision-sub">
+
+        Built on values that matter.
+
+    </p>
+
+
+    <div class="cards">
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🐄
+            </div>
+
+            <h3>
+                Care For Animals
+            </h3>
+
+            <p>
+
+                Every animal deserves proper
+                care, attention and a healthy
+                environment.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🌱
+            </div>
+
+            <h3>
+                Respect For Nature
+            </h3>
+
+            <p>
+
+                Responsible farming begins with
+                respecting the natural environment.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                ✨
+            </div>
+
+            <h3>
+                Clean Environment
+            </h3>
+
+            <p>
+
+                Clean surroundings help maintain
+                a healthy and comfortable Tabela.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                ⭐
+            </div>
+
+            <h3>
+                Quality First
+            </h3>
+
+            <p>
+
+                Quality and consistency remain
+                important parts of our approach.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section class="values reveal">
+
+
+    <div class="section-label">
+
+        CORE VALUES
+
+    </div>
+
+
+    <div class="value">
+
+        <span class="value-number">
+            01
+        </span>
+
+        <h3>
+            Responsibility
+        </h3>
+
+    </div>
+
+
+    <div class="value">
+
+        <span class="value-number">
+            02
+        </span>
+
+        <h3>
+            Dedication
+        </h3>
+
+    </div>
+
+
+    <div class="value">
+
+        <span class="value-number">
+            03
+        </span>
+
+        <h3>
+            Trust
+        </h3>
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="quote reveal">
+
+
+    <div class="quote-text">
+
+        “A good Tabela is not defined only
+        by the animals it has, but by the
+        care given to every animal every day.”
+
+    </div>
+
+
+    <div class="quote-author">
+
+        — SIR HIMANSHU
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+
+    <h2>
+
+        Explore The Tabela
+
+    </h2>
+
+
+    <div class="buttons">
+
+
+        <a
+            href="index.html"
+            class="btn btn-primary"
+        >
+
+            BACK TO HOME
+
+        </a>
+
+
+        <a
+            href="farm.html"
+            class="btn btn-secondary"
+        >
+
+            EXPLORE FARM
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Tabela — Sir Himanshu
+
+</footer>
+
+
+<script>
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        setTimeout(
+            function(){
+
+                document
+                    .querySelector(".loader")
+                    .classList.add("hide");
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+function revealOnScroll(){
+
+    revealElements.forEach(
+        function(element){
+
+            const position =
+                element
+                .getBoundingClientRect()
+                .top;
+
+
+            if(
+                position <
+                window.innerHeight - 80
+            ){
+
+                element.classList.add("show");
+
+            }
+
+        }
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll,
+    {passive:true}
+);
+
+
+revealOnScroll();
+
+
+/* =====================================================
+   CUSTOM CURSOR
+===================================================== */
+
+const cursor =
+    document.querySelector(".cursor");
+
+const cursorRing =
+    document.querySelector(".cursor-ring");
+
+const trails =
+    document.querySelectorAll(".cursor-trail");
+
+
+let mouseX =
+    window.innerWidth / 2;
+
+let mouseY =
+    window.innerHeight / 2;
+
+let ringX = mouseX;
+let ringY = mouseY;
+
+
+const trailPositions =
+    Array.from(trails)
+    .map(
+        function(){
+
+            return {
+                x:mouseX,
+                y:mouseY
+            };
+
+        }
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        mouseX =
+            e.clientX;
+
+        mouseY =
+            e.clientY;
+
+
+        cursor.style.left =
+            mouseX + "px";
+
+        cursor.style.top =
+            mouseY + "px";
+
+    }
+);
+
+
+function animateCursor(){
+
+    ringX +=
+        (mouseX - ringX) * .15;
+
+    ringY +=
+        (mouseY - ringY) * .15;
+
+
+    cursorRing.style.left =
+        ringX + "px";
+
+    cursorRing.style.top =
+        ringY + "px";
+
+
+    let previousX =
+        mouseX;
+
+    let previousY =
+        mouseY;
+
+
+    trails.forEach(
+        function(
+            trail,
+            index
+        ){
+
+            const position =
+                trailPositions[index];
+
+
+            position.x +=
+                (
+                    previousX -
+                    position.x
+                ) *
+                (
+                    .22 -
+                    index * .015
+                );
+
+
+            position.y +=
+                (
+                    previousY -
+                    position.y
+                ) *
+                (
+                    .22 -
+                    index * .015
+                );
+
+
+            trail.style.left =
+                position.x + "px";
+
+            trail.style.top =
+                position.y + "px";
+
+
+            trail.style.opacity =
+                (
+                    1 -
+                    index /
+                    trails.length
+                ) * .45;
+
+
+            const scale =
+                1 -
+                index * .08;
+
+
+            trail.style.transform =
+                `translate(-50%,-50%) scale(${scale})`;
+
+
+            previousX =
+                position.x;
+
+            previousY =
+                position.y;
+
+        }
+    );
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+
+}
+
+
+animateCursor();
+
+
+/* =====================================================
+   CURSOR HOVER
+===================================================== */
+
+const hoverElements =
+    document.querySelectorAll(
+        "a, .card, .profile-photo, .value"
+    );
+
+
+hoverElements.forEach(
+    function(element){
+
+        element.addEventListener(
+            "mouseenter",
+            function(){
+
+                cursor.classList.add(
+                    "hover"
+                );
+
+                cursorRing.classList.add(
+                    "hover"
+                );
+
+            }
+        );
+
+
+        element.addEventListener(
+            "mouseleave",
+            function(){
+
+                cursor.classList.remove(
+                    "hover"
+                );
+
+                cursorRing.classList.remove(
+                    "hover"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   PHOTO MOUSE EFFECT
+===================================================== */
+
+const photo =
+    document.querySelector(
+        ".profile-photo"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(
+            window.innerWidth <= 600
+        ){
+
+            return;
+
+        }
+
+
+        const x =
+            (
+                window.innerWidth / 2 -
+                e.clientX
+            ) / 45;
+
+
+        const y =
+            (
+                window.innerHeight / 2 -
+                e.clientY
+            ) / 45;
+
+
+        photo.style.transform =
+            `rotateY(${x}deg) rotateX(${y}deg)`;
+
+    }
+);
+
+
+photo.addEventListener(
+    "mouseleave",
+    function(){
+
+        photo.style.transform =
+            "rotateY(0deg) rotateX(0deg)";
+
+    }
+);
+
+
+/* =====================================================
+   BUTTON PRESS
+===================================================== */
+
+document
+    .querySelectorAll(".btn")
+    .forEach(
+        function(btn){
+
+            btn.addEventListener(
+                "mousedown",
+                function(){
+
+                    btn.style.transform =
+                        "scale(.95)";
+
+                }
+            );
+
+
+            btn.addEventListener(
+                "mouseup",
+                function(){
+
+                    btn.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+    );
+
+
+</script>
+
+</body>
+
+</html>
