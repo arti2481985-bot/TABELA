@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Farm | Sir Himanshu's Tabela</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07140d;
+    color: white;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: #9cff57;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px #9cff57;
+}
+
+.cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(156,255,87,0.65);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition:
+        width .2s,
+        height .2s,
+        border .2s;
+}
+
+.cursor-ring.active {
+    width: 55px;
+    height: 55px;
+    border-color: #d4ffad;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(55,130,55,.30),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(120,180,50,.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(20,100,55,.25),
+            transparent 35%
+        ),
+        #07140d;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    background: rgba(107,255,75,.08);
+
+    border-radius: 50%;
+    filter: blur(100px);
+
+    left: -150px;
+    top: 20%;
+
+    animation:
+        glowMove 10s infinite alternate ease-in-out;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    background: rgba(30,180,90,.08);
+
+    border-radius: 50%;
+    filter: blur(100px);
+
+    right: -120px;
+    bottom: 10%;
+
+    animation:
+        glowMove2 12s infinite alternate ease-in-out;
+}
+
+@keyframes glowMove {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(250px,100px);
+    }
+
+}
+
+@keyframes glowMove2 {
+
+    from {
+        transform: translate(0,0);
+    }
+
+    to {
+        transform: translate(-200px,-100px);
+    }
+
+}
+
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+.particle {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    background: #a9ff71;
+
+    border-radius: 50%;
+
+    opacity: .4;
+
+    z-index: -1;
+
+    animation:
+        floatParticle linear infinite;
+}
+
+.p1 {
+    left: 10%;
+    animation-duration: 13s;
+}
+
+.p2 {
+    left: 25%;
+    animation-duration: 17s;
+    animation-delay: 2s;
+}
+
+.p3 {
+    left: 40%;
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+.p4 {
+    left: 60%;
+    animation-duration: 15s;
+    animation-delay: 1s;
+}
+
+.p5 {
+    left: 75%;
+    animation-duration: 19s;
+    animation-delay: 3s;
+}
+
+.p6 {
+    left: 90%;
+    animation-duration: 14s;
+    animation-delay: 5s;
+}
+
+@keyframes floatParticle {
+
+    from {
+        transform:
+            translateY(110vh)
+            scale(.5);
+    }
+
+    to {
+        transform:
+            translateY(-10vh)
+            scale(1.4);
+    }
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+
+    top: 15px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 92%;
+    max-width: 1200px;
+
+    padding: 14px 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background:
+        rgba(15,35,23,.65);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border:
+        1px solid rgba(170,255,130,.16);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.3);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #d9ffc2;
+
+    letter-spacing: .5px;
+}
+
+.logo span {
+    color: #8eff4e;
+}
+
+.nav-links {
+    display: flex;
+
+    gap: 8px;
+
+    list-style: none;
+}
+
+.nav-links a {
+
+    color: #eaffdf;
+
+    text-decoration: none;
+
+    padding: 10px 15px;
+
+    border-radius: 13px;
+
+    transition: .3s;
+
+    font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    background:
+        rgba(130,255,80,.13);
+
+    color: #aaff78;
+
+    box-shadow:
+        0 0 20px rgba(120,255,80,.08);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    padding:
+        150px 8% 90px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.hero-content {
+
+    max-width: 950px;
+
+    animation:
+        heroAppear 1.3s ease forwards;
+}
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.small-title {
+
+    display: inline-block;
+
+    padding:
+        9px 18px;
+
+    border:
+        1px solid rgba(160,255,120,.25);
+
+    background:
+        rgba(130,255,80,.07);
+
+    border-radius: 30px;
+
+    color: #baff96;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(48px, 8vw, 100px);
+
+    line-height: .95;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #b9ff91,
+            #73d84e,
+            #ffffff
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        gradientText 5s infinite alternate;
+}
+
+@keyframes gradientText {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 100%;
+    }
+
+}
+
+.hero p {
+
+    max-width: 720px;
+
+    margin: auto;
+
+    color: #bfd2bd;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+.hero-buttons {
+
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+
+    text-decoration: none;
+
+    padding:
+        14px 25px;
+
+    border-radius: 15px;
+
+    transition: .35s;
+
+    font-weight: bold;
+}
+
+.btn-primary {
+
+    background: #91ed61;
+
+    color: #10200f;
+
+    box-shadow:
+        0 0 25px rgba(145,237,97,.18);
+}
+
+.btn-primary:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 35px rgba(145,237,97,.4);
+}
+
+.btn-secondary {
+
+    color: #d9ffd0;
+
+    border:
+        1px solid rgba(160,255,130,.25);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(130,255,80,.1);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 100px 7%;
+}
+
+.section-title {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.section-title .tag {
+
+    color: #94ee68;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.section-title h2 {
+
+    margin-top: 12px;
+
+    font-size:
+        clamp(32px, 5vw, 55px);
+}
+
+.section-title p {
+
+    color: #a9bca8;
+
+    max-width: 650px;
+
+    margin:
+        15px auto 0;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FARM INTRO
+========================= */
+
+.farm-intro {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 45px;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    align-items: center;
+}
+
+
+/* REAL COW PHOTO */
+
+.farm-image {
+
+    min-height: 430px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    border:
+        1px solid rgba(180,255,140,.14);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+
+    animation:
+        imageFloat 5s ease-in-out infinite;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.05),
+            rgba(0,20,10,.40)
+        ),
+
+        url(
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cow_Farm_-_%E0%B4%AA%E0%B4%B6%E0%B5%81_%E0%B4%AB%E0%B4%BE%E0%B4%82_01.jpg"
+        );
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+.farm-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(70,150,50,.15),
+            transparent 60%
+        );
+
+    pointer-events: none;
+}
+
+.farm-image::after {
+
+    content:
+        "OUR FARM";
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 25px;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #caffad;
+
+    text-shadow:
+        0 2px 10px black;
+}
+
+@keyframes imageFloat {
+
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+.farm-text h3 {
+
+    font-size: 38px;
+
+    margin-bottom: 20px;
+}
+
+.farm-text h3 span {
+
+    color: #93ed62;
+}
+
+.farm-text p {
+
+    color: #b8c9b7;
+
+    line-height: 1.9;
+
+    margin-bottom: 18px;
+}
+
+.farm-points {
+
+    display: grid;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.point {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        13px 15px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(180,255,140,.08);
+
+    border-radius: 14px;
+
+    transition: .3s;
+}
+
+.point:hover {
+
+    transform:
+        translateX(8px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.point-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(130,255,80,.12);
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+}
+
+.feature-card {
+
+    padding: 30px;
+
+    min-height: 230px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(190,255,150,.12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    transition: .45s;
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation:
+        cardAppear .8s ease both;
+}
+
+.feature-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    background:
+        rgba(120,255,70,.08);
+
+    border-radius: 50%;
+
+    filter: blur(35px);
+
+    top: -80px;
+    right: -80px;
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-12px);
+
+    border-color:
+        rgba(160,255,120,.3);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.3);
+}
+
+.feature-icon {
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+
+    margin-bottom: 12px;
+
+    font-size: 22px;
+}
+
+.feature-card p {
+
+    color: #aebfae;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================
+   DAILY FARM LIFE
+========================= */
+
+.daily {
+
+    max-width: 1050px;
+
+    margin: auto;
+}
+
+.timeline {
+
+    position: relative;
+
+    display: grid;
+
+    gap: 20px;
+}
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            transparent,
+            #86e85a,
+            transparent
+        );
+}
+
+.time-card {
+
+    margin-left: 65px;
+
+    padding:
+        24px 28px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(190,255,150,.1);
+
+    border-radius: 20px;
+
+    transition: .35s;
+
+    position: relative;
+}
+
+.time-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    background:
+        #91ed61;
+
+    border-radius: 50%;
+
+    left: -48px;
+
+    top: 32px;
+
+    box-shadow:
+        0 0 20px #91ed61;
+}
+
+.time-card:hover {
+
+    transform:
+        translateX(8px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.time {
+
+    color: #92ec63;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.time-card h3 {
+
+    margin-bottom: 8px;
+}
+
+.time-card p {
+
+    color: #afc0ae;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   VALUES
+========================= */
+
+.values {
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+}
+
+.value {
+
+    text-align: center;
+
+    padding:
+        30px 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(190,255,150,.09);
+
+    transition: .35s;
+}
+
+.value:hover {
+
+    transform:
+        translateY(-8px);
+
+    background:
+        rgba(130,255,80,.07);
+}
+
+.value strong {
+
+    display: block;
+
+    font-size: 18px;
+
+    margin-top: 12px;
+}
+
+.value span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #9caf9c;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+.value-icon {
+
+    font-size: 40px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+
+    max-width: 1000px;
+
+    margin:
+        30px auto 100px;
+
+    padding:
+        65px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(100,180,70,.15),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid rgba(180,255,140,.14);
+
+    border-radius: 35px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    background:
+        rgba(120,255,70,.08);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    top: -200px;
+
+    left: -100px;
+}
+
+.cta h2 {
+
+    font-size:
+        clamp(30px,5vw,50px);
+
+    margin-bottom: 15px;
+}
+
+.cta p {
+
+    color: #b8c9b7;
+
+    max-width: 600px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+.cta .btn {
+
+    display: inline-block;
+
+    margin-top: 25px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    text-align: center;
+
+    padding:
+        35px 20px;
+
+    border-top:
+        1px solid rgba(180,255,140,.08);
+
+    color: #849484;
+
+    font-size: 14px;
+}
+
+footer strong {
+
+    color: #b8e9a0;
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(50px);
+
+    transition:
+        1s ease;
+}
+
+.reveal.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    body {
+        cursor: auto;
+    }
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        width: 94%;
+    }
+
+    .farm-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .values {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+
+        padding:
+            130px 6% 70px;
+    }
+
+    .hero h1 {
+
+        font-size: 53px;
+    }
+
+    .hero p {
+
+        font-size: 15px;
+    }
+
+    section {
+
+        padding:
+            75px 5%;
+    }
+
+    .farm-image {
+
+        min-height: 300px;
+    }
+
+    .farm-text h3 {
+
+        font-size: 30px;
+    }
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .values {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .value {
+
+        padding:
+            22px 10px;
+    }
+
+    .timeline::before {
+
+        left: 15px;
+    }
+
+    .time-card {
+
+        margin-left: 45px;
+
+        padding:
+            20px;
+    }
+
+    .time-card::before {
+
+        left: -37px;
+    }
+
+    .cta {
+
+        margin:
+            10px 5% 70px;
+
+        padding:
+            45px 20px;
+    }
+
+    .logo {
+
+        font-size: 17px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="background"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+
+<!-- CUSTOM CURSOR -->
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        Sir Himanshu's
+        <span>Tabela</span>
+
+    </div>
+
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="cows.html">
+                Cows
+            </a>
+        </li>
+
+        <li>
+            <a href="products.html">
+                Products
+            </a>
+        </li>
+
+        <li>
+            <a href="farm.html"
+               class="active">
+                Our Farm
+            </a>
+        </li>
+
+        <li>
+            <a href="Meet.html">
+                Meet Sir
+            </a>
+        </li>
+
+        <li>
+            <a href="contact.html">
+                Contact
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+
+            WELCOME TO OUR FARM
+
+        </div>
+
+
+        <h1>
+
+            OUR FARM
+
+        </h1>
+
+
+        <p>
+
+            A place where care, cleanliness and dedication
+            come together. Discover the daily life, values
+            and environment of Sir Himanshu's Tabela.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="#about"
+                class="btn btn-primary">
+
+                Explore Farm
+
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="btn btn-secondary">
+
+                Contact Us
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     FARM INTRO
+========================= -->
+
+<section id="about">
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+
+            ABOUT THE FARM
+
+        </div>
+
+
+        <h2>
+
+            More Than Just A Tabela
+
+        </h2>
+
+
+        <p>
+
+            Our farm is built around responsible care,
+            a clean environment and everyday attention
+            to the animals.
+
+        </p>
+
+    </div>
+
+
+    <div class="farm-intro">
+
+
+        <!-- REAL PHOTO -->
+
+        <div class="farm-image reveal"></div>
+
+
+        <div class="farm-text reveal">
+
+            <h3>
+
+                Welcome to
+                <span>Our Farm</span>
+
+            </h3>
+
+
+            <p>
+
+                Sir Himanshu's Tabela is a place where
+                the animals are cared for with attention
+                and responsibility.
+
+            </p>
+
+
+            <p>
+
+                From feeding and cleaning to maintaining
+                a comfortable environment, every part
+                of the farm is handled with regular care.
+
+            </p>
+
+
+            <div class="farm-points">
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        🌱
+                    </div>
+
+                    <span>
+                        Clean and natural surroundings
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        🐄
+                    </div>
+
+                    <span>
+                        Proper care of our cattle
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        💧
+                    </div>
+
+                    <span>
+                        Fresh water and regular cleaning
+                    </span>
+
+                </div>
+
+
+                <div class="point">
+
+                    <div class="point-icon">
+                        ❤️
+                    </div>
+
+                    <span>
+                        Care, responsibility and dedication
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section>
+
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+
+            FARM FEATURES
+
+        </div>
+
+
+        <h2>
+
+            What Makes Our Farm Special
+
+        </h2>
+
+
+        <p>
+
+            The farm focuses on the basic things that
+            matter every day: care, cleanliness,
+            nutrition and a healthy environment.
+
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🐄
+            </div>
+
+            <h3>
+                Healthy Cattle
+            </h3>
+
+            <p>
+
+                Our cattle are given regular attention
+                and proper daily care to maintain
+                a comfortable environment.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🌾
+            </div>
+
+            <h3>
+                Proper Feeding
+            </h3>
+
+            <p>
+
+                Feeding is an important part of farm
+                management and is handled as part
+                of the daily routine.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🧹
+            </div>
+
+            <h3>
+                Clean Environment
+            </h3>
+
+            <p>
+
+                Regular cleaning helps maintain a
+                cleaner and more comfortable space
+                for the animals.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                💧
+            </div>
+
+            <h3>
+                Fresh Water
+            </h3>
+
+            <p>
+
+                Fresh and accessible water is an
+                important part of maintaining the
+                animals' daily needs.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                🌿
+            </div>
+
+            <h3>
+                Natural Surroundings
+            </h3>
+
+            <p>
+
+                Green surroundings provide the farm
+                with a peaceful and natural atmosphere.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature-card reveal">
+
+            <div class="feature-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Personal Care
+            </h3>
+
+            <p>
+
+                Regular observation and personal
+                attention are important parts of
+                the way our farm is managed.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DAILY LIFE
+========================= -->
+
+<section>
+
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            DAILY ROUTINE
+        </div>
+
+
+        <h2>
+            Life At The Farm
+        </h2>
+
+
+        <p>
+
+            A farm is built through small tasks
+            performed consistently every day.
+
+        </p>
+
+    </div>
+
+
+    <div class="daily">
+
+        <div class="timeline">
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    MORNING
+                </div>
+
+                <h3>
+                    Start of the Day
+                </h3>
+
+                <p>
+
+                    The day begins with checking the
+                    cattle, preparing their surroundings
+                    and taking care of their basic needs.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    DAYTIME
+                </div>
+
+                <h3>
+                    Feeding & Care
+                </h3>
+
+                <p>
+
+                    Feeding, water and regular observation
+                    form an important part of the daytime
+                    routine.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    AFTERNOON
+                </div>
+
+                <h3>
+                    Cleaning & Maintenance
+                </h3>
+
+                <p>
+
+                    The farm surroundings are maintained
+                    so that the animals have a cleaner
+                    and more comfortable space.
+
+                </p>
+
+            </div>
+
+
+            <div class="time-card reveal">
+
+                <div class="time">
+                    EVENING
+                </div>
+
+                <h3>
+                    Evening Care
+                </h3>
+
+                <p>
+
+                    Another round of feeding, water and
+                    observation helps complete the
+                    daily routine.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VALUES
+========================= -->
+
+<section>
+
+
+    <div class="section-title reveal">
+
+        <div class="tag">
+            OUR VALUES
+        </div>
+
+
+        <h2>
+            What We Believe In
+        </h2>
+
+    </div>
+
+
+    <div class="values">
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                ❤️
+            </div>
+
+            <strong>
+                Care
+            </strong>
+
+            <span>
+
+                Treating our animals with attention
+                and responsibility.
+
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                ✨
+            </div>
+
+            <strong>
+                Cleanliness
+            </strong>
+
+            <span>
+
+                Keeping the farm environment clean
+                and maintained.
+
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                🌱
+            </div>
+
+            <strong>
+                Nature
+            </strong>
+
+            <span>
+
+                Maintaining a peaceful and natural
+                farm environment.
+
+            </span>
+
+        </div>
+
+
+        <div class="value reveal">
+
+            <div class="value-icon">
+                🤝
+            </div>
+
+            <strong>
+                Trust
+            </strong>
+
+            <span>
+
+                Building a farm based on responsibility
+                and honesty.
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<div class="cta reveal">
+
+
+    <h2>
+        Want To Know More?
+    </h2>
+
+
+    <p>
+
+        Explore our cattle, discover our products
+        or get in touch with Sir Himanshu's Tabela.
+
+    </p>
+
+
+    <a
+        href="contact.html"
+        class="btn btn-primary">
+
+        Contact Us
+
+    </a>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026
+    <strong>
+        Sir Himanshu's Tabela
+    </strong>
+
+    <br>
+
+    Built with care • Designed by Tanishk
+
+</footer>
+
+
+<script>
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+const dot =
+    document.querySelector(".cursor-dot");
+
+const ring =
+    document.querySelector(".cursor-ring");
+
+
+document.addEventListener(
+    "mousemove",
+    function(e) {
+
+        dot.style.left =
+            e.clientX + "px";
+
+        dot.style.top =
+            e.clientY + "px";
+
+
+        ring.style.left =
+            e.clientX + "px";
+
+        ring.style.top =
+            e.clientY + "px";
+
+    }
+);
+
+
+/* CURSOR HOVER */
+
+document
+.querySelectorAll(
+    "a, .feature-card, .point, .value, .time-card"
+)
+.forEach(element => {
+
+    element.addEventListener(
+        "mouseenter",
+        () => {
+
+            ring.classList.add(
+                "active"
+            );
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        () => {
+
+            ring.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================
+   3D CARD EFFECT
+========================= */
+
+document
+.querySelectorAll(".feature-card")
+.forEach(card => {
+
+
+    card.addEventListener(
+        "mousemove",
+        function(e) {
+
+            const rect =
+                card.getBoundingClientRect();
+
+
+            const x =
+                e.clientX - rect.left;
+
+
+            const y =
+                e.clientY - rect.top;
+
+
+            const centerX =
+                rect.width / 2;
+
+
+            const centerY =
+                rect.height / 2;
+
+
+            const rotateX =
+                ((y - centerY) /
+                centerY) * -3;
+
+
+            const rotateY =
+                ((x - centerX) /
+                centerX) * 3;
+
+
+            card.style.transform =
+                `perspective(700px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-8px)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        function() {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html>
