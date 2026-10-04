@@ -1,0 +1,3117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Himanshu Tabela | Premium Cattle Farm</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================================================
+   BASIC RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#020b07;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   BODY BACKGROUND
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at 10% 20%,
+        rgba(25,217,120,.15),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 90% 80%,
+        rgba(85,234,255,.10),
+        transparent 25%
+    );
+
+    pointer-events:none;
+
+    z-index:-2;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#020b07;
+
+    z-index:99999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+.loader-box{
+
+    text-align:center;
+}
+
+.loader-logo{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:45px;
+
+    color:#6dff9d;
+
+    animation:
+        loaderPulse 1.5s infinite;
+
+}
+
+.loader-text{
+
+    margin-top:15px;
+
+    color:#9eb1a5;
+
+    letter-spacing:2px;
+
+    font-size:12px;
+
+}
+
+.loader-line{
+
+    width:220px;
+
+    height:3px;
+
+    margin:22px auto;
+
+    background:#173d2b;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+}
+
+.loader-line::after{
+
+    content:"";
+
+    display:block;
+
+    height:100%;
+
+    width:50%;
+
+    background:#6dff9d;
+
+    box-shadow:
+        0 0 15px #6dff9d,
+        0 0 30px #6dff9d;
+
+    animation:loaderLine 1.2s infinite;
+
+}
+
+@keyframes loaderPulse{
+
+    50%{
+
+        transform:scale(1.08);
+
+        text-shadow:
+            0 0 10px #6dff9d,
+            0 0 30px #6dff9d,
+            0 0 60px rgba(109,255,157,.5);
+
+    }
+
+}
+
+@keyframes loaderLine{
+
+    0%{
+        transform:translateX(-200%);
+    }
+
+    100%{
+        transform:translateX(400%);
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    background:#6dff9d;
+
+    border-radius:50%;
+
+    opacity:.5;
+
+    box-shadow:
+        0 0 8px #6dff9d;
+
+    animation:
+        floatParticle linear infinite;
+
+}
+
+@keyframes floatParticle{
+
+    0%{
+
+        transform:
+            translateY(110vh)
+            scale(.3);
+
+        opacity:0;
+
+    }
+
+    20%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.7;
+    }
+
+    100%{
+
+        transform:
+            translateY(-20vh)
+            scale(1.2);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:92%;
+
+    max-width:1250px;
+
+    padding:13px 18px;
+
+    background:
+        rgba(4,18,11,.58);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    z-index:5000;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.08);
+
+    transition:.4s;
+
+}
+
+.navbar:hover{
+
+    border-color:
+        rgba(109,255,157,.35);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.35),
+        0 0 35px rgba(109,255,157,.06);
+
+}
+
+.logo{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:25px;
+
+    font-weight:800;
+
+    color:white;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+}
+
+.logo span{
+
+    color:#6dff9d;
+
+    text-shadow:
+        0 0 15px rgba(109,255,157,.5);
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    text-decoration:none;
+
+    color:#d8e9df;
+
+    padding:11px 13px;
+
+    border-radius:13px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    overflow:hidden;
+
+}
+
+.nav-links a:hover{
+
+    color:#6dff9d;
+
+    background:
+        rgba(109,255,157,.08);
+
+    transform:translateY(-2px);
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:4px;
+
+    width:0;
+
+    height:2px;
+
+    background:#6dff9d;
+
+    box-shadow:
+        0 0 10px #6dff9d;
+
+    transition:.3s;
+
+    transform:translateX(-50%);
+
+}
+
+.nav-links a:hover::after{
+
+    width:50%;
+
+}
+
+.nav-btn{
+
+    padding:11px 18px;
+
+    border-radius:13px;
+
+    background:#6dff9d;
+
+    color:#031108;
+
+    text-decoration:none;
+
+    font-weight:900;
+
+    font-size:14px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 20px rgba(109,255,157,.2);
+
+}
+
+.nav-btn:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 30px rgba(109,255,157,.45);
+
+}
+
+.menu-btn{
+
+    display:none;
+
+    width:45px;
+
+    height:45px;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:white;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:
+        140px 7%
+        80px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(2,11,7,.94) 0%,
+            rgba(2,11,7,.80) 38%,
+            rgba(2,11,7,.35) 75%,
+            rgba(2,11,7,.15) 100%
+        ),
+
+        url("https://img.magnific.com/premium-photo/cow-standing-green-pasture-cow-field-livestock-grazing-countryside-farm-life-with-cattle-calves-cow-rural-landscape-ranch-with-grazing-bovine-dairy-cow_265223-182213.jpg?semt=ais_hybrid&w=740&q=80");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+    overflow:hidden;
+
+}
+
+
+/* HERO LIGHT */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    left:-300px;
+
+    top:30%;
+
+    border-radius:50%;
+
+    background:
+        rgba(109,255,157,.12);
+
+    filter:blur(80px);
+
+    animation:
+        heroGlow 5s ease-in-out infinite;
+
+}
+
+@keyframes heroGlow{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.3);
+        opacity:1;
+    }
+
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content{
+
+    max-width:850px;
+
+    position:relative;
+
+    z-index:10;
+
+    animation:
+        heroContentEnter 1.2s ease forwards;
+
+}
+
+@keyframes heroContentEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(70px)
+            scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL HERO TAG
+========================================================= */
+
+.tag{
+
+    display:inline-block;
+
+    padding:10px 17px;
+
+    border:
+        1px solid rgba(109,255,157,.35);
+
+    background:
+        rgba(109,255,157,.08);
+
+    color:#6dff9d;
+
+    border-radius:100px;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    margin-bottom:24px;
+
+    backdrop-filter:blur(10px);
+
+    animation:
+        tagAppear 1s ease .4s both;
+
+}
+
+@keyframes tagAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(20px)
+            scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+.hero-title{
+
+    position:relative;
+
+    margin-bottom:25px;
+
+    perspective:1000px;
+
+}
+
+
+/* WELCOME */
+
+.welcome-line{
+
+    display:block;
+
+    font-family:"DM Sans",sans-serif;
+
+    font-size:
+        clamp(18px,2.5vw,30px);
+
+    font-weight:900;
+
+    letter-spacing:
+        clamp(5px,1vw,12px);
+
+    color:#eafff0;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:
+        welcomeReveal 1s
+        cubic-bezier(.2,.8,.2,1)
+        .5s forwards;
+
+}
+
+@keyframes welcomeReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(40px)
+            rotateX(90deg);
+
+        filter:blur(12px);
+
+    }
+
+    70%{
+
+        opacity:1;
+
+        transform:
+            translateY(-5px)
+            rotateX(-8deg);
+
+        filter:blur(0);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotateX(0);
+
+    }
+
+}
+
+
+/* HIMANSHU */
+
+.himanshu-line{
+
+    display:block;
+
+    position:relative;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:
+        clamp(50px,8vw,105px);
+
+    line-height:.92;
+
+    font-weight:800;
+
+    letter-spacing:-3px;
+
+    color:white;
+
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:
+        titleReveal 1.3s
+        cubic-bezier(.16,1,.3,1)
+        .8s forwards;
+
+}
+
+
+/* TABELA */
+
+.tabela-line{
+
+    display:block;
+
+    position:relative;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:
+        clamp(48px,7vw,92px);
+
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    margin-top:5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #6dff9d 25%,
+            #55eaff 50%,
+            #6dff9d 75%,
+            #ffffff 100%
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    animation:
+
+        titleReveal 1.4s
+        cubic-bezier(.16,1,.3,1)
+        1s forwards,
+
+        titleGradient 5s
+        linear infinite;
+
+    text-shadow:none;
+
+}
+
+
+/* TITLE REVEAL */
+
+@keyframes titleReveal{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(100px)
+            rotateX(80deg)
+            scale(.75);
+
+        filter:
+            blur(18px);
+
+    }
+
+    55%{
+
+        opacity:1;
+
+        transform:
+            translateY(-12px)
+            rotateX(-10deg)
+            scale(1.04);
+
+        filter:
+            blur(0);
+
+    }
+
+    75%{
+
+        transform:
+            translateY(5px)
+            rotateX(3deg)
+            scale(.98);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotateX(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* MOVING GRADIENT */
+
+@keyframes titleGradient{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+
+}
+
+
+/* TITLE LIGHT SWEEP */
+
+.tabela-line::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:40%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    animation:
+        titleSweep 4s
+        ease-in-out
+        2.3s infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes titleSweep{
+
+    0%{
+        left:-100%;
+    }
+
+    35%{
+        left:130%;
+    }
+
+    100%{
+        left:130%;
+    }
+
+}
+
+
+/* GLOW BEHIND TITLE */
+
+.title-glow{
+
+    position:absolute;
+
+    width:550px;
+
+    height:180px;
+
+    left:10%;
+
+    top:20%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(109,255,157,.18),
+            transparent 70%
+        );
+
+    filter:blur(20px);
+
+    z-index:-1;
+
+    animation:
+        titleGlow 3s ease-in-out infinite;
+
+}
+
+@keyframes titleGlow{
+
+    0%,100%{
+
+        transform:
+            scale(.8);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:
+            scale(1.2);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* TITLE UNDERLINE */
+
+.title-underline{
+
+    position:relative;
+
+    width:320px;
+
+    height:5px;
+
+    margin-top:25px;
+
+    border-radius:100px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    opacity:0;
+
+    animation:
+        underlineAppear 1s
+        2s forwards;
+
+}
+
+.title-underline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    height:100%;
+
+    width:80%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6dff9d,
+            #55eaff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px #6dff9d;
+
+    animation:
+        underlineMove 2.5s
+        ease-in-out infinite;
+
+}
+
+@keyframes underlineAppear{
+
+    from{
+
+        opacity:0;
+
+        width:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+        width:320px;
+
+    }
+
+}
+
+@keyframes underlineMove{
+
+    0%{
+        transform:translateX(-30%);
+    }
+
+    50%{
+        transform:translateX(30%);
+    }
+
+    100%{
+        transform:translateX(-30%);
+    }
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-description{
+
+    color:#c8d8cf;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    max-width:650px;
+
+    opacity:0;
+
+    animation:
+        descriptionAppear
+        1s ease
+        1.7s forwards;
+
+}
+
+@keyframes descriptionAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+    opacity:0;
+
+    animation:
+        buttonsAppear
+        1s ease
+        2s forwards;
+
+}
+
+@keyframes buttonsAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+.btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+    text-decoration:none;
+
+    padding:15px 22px;
+
+    border-radius:15px;
+
+    font-weight:900;
+
+    transition:.35s;
+
+    display:inline-block;
+
+}
+
+.btn-primary{
+
+    background:#6dff9d;
+
+    color:#031108;
+
+    box-shadow:
+        0 0 0 rgba(109,255,157,0);
+
+}
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 35px rgba(109,255,157,.3),
+        0 0 25px rgba(109,255,157,.2);
+
+}
+
+.btn-outline{
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:white;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.btn-outline:hover{
+
+    background:
+        rgba(109,255,157,.1);
+
+    border-color:#6dff9d;
+
+    transform:
+        translateY(-5px);
+
+}
+
+
+/* =========================================================
+   RIPPLE EFFECT
+========================================================= */
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.55);
+
+    transform:scale(0);
+
+    animation:
+        rippleEffect .6s linear;
+
+    pointer-events:none;
+
+}
+
+@keyframes rippleEffect{
+
+    to{
+
+        transform:scale(5);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+
+    padding:
+        110px 7%;
+
+    position:relative;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    max-width:750px;
+
+    margin:
+        0 auto 60px;
+
+}
+
+.section-title span{
+
+    color:#6dff9d;
+
+    font-size:13px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+}
+
+.section-title h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:
+        clamp(35px,5vw,60px);
+
+    margin:
+        12px 0;
+
+}
+
+.section-title p{
+
+    color:#9eb1a5;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
+   INTRO GRID
+========================================================= */
+
+.intro-grid{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:30px;
+
+}
+
+.glass{
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    border-radius:28px;
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.2);
+
+}
+
+.farm-card{
+
+    min-height:430px;
+
+    padding:15px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.farm-card img{
+
+    width:100%;
+
+    height:100%;
+
+    min-height:400px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    transition:1s;
+
+}
+
+.farm-card:hover img{
+
+    transform:scale(1.07);
+
+}
+
+.farm-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:15px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(0,0,0,.8)
+        );
+
+    pointer-events:none;
+
+}
+
+.text-card{
+
+    padding:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+.text-card h3{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:38px;
+
+    margin-bottom:18px;
+
+}
+
+.text-card p{
+
+    color:#aebfb5;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =========================================================
+   PAGE OPTIONS
+========================================================= */
+
+.page-options{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.option-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:30px;
+
+    min-height:215px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    border-radius:25px;
+
+    backdrop-filter:blur(16px);
+
+    transition:
+        transform .4s,
+        border-color .4s,
+        box-shadow .4s;
+
+}
+
+.option-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(109,255,157,.12);
+
+    top:-90px;
+
+    right:-70px;
+
+    transition:.5s;
+
+}
+
+.option-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    border-color:
+        rgba(109,255,157,.5);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3),
+        0 0 35px rgba(109,255,157,.08);
+
+}
+
+.option-card:hover::before{
+
+    transform:scale(2);
+
+}
+
+.option-icon{
+
+    width:55px;
+
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:27px;
+
+    background:
+        rgba(109,255,157,.1);
+
+    border:
+        1px solid rgba(109,255,157,.2);
+
+    border-radius:17px;
+
+    margin-bottom:20px;
+
+    transition:.4s;
+
+}
+
+.option-card:hover .option-icon{
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+
+    background:#6dff9d;
+
+}
+
+.option-card h3{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+.option-card p{
+
+    color:#93a79a;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+.arrow{
+
+    position:absolute;
+
+    right:25px;
+
+    bottom:25px;
+
+    color:#6dff9d;
+
+    font-size:22px;
+
+    transition:.3s;
+
+}
+
+.option-card:hover .arrow{
+
+    transform:
+        translateX(7px);
+
+}
+
+
+/* =========================================================
+   SIR SECTION
+========================================================= */
+
+.sir-section{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        420px 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+.sir-photo-box{
+
+    position:relative;
+
+    padding:15px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(109,255,157,.2);
+
+    box-shadow:
+        0 0 60px rgba(109,255,157,.08);
+
+}
+
+.sir-photo-box img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:20px;
+
+    transition:.7s;
+
+}
+
+.sir-photo-box:hover img{
+
+    transform:scale(1.03);
+
+}
+
+.sir-content h2{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.sir-content p{
+
+    color:#a8b9af;
+
+    line-height:1.9;
+
+    margin-bottom:20px;
+
+}
+
+.quote{
+
+    padding:20px;
+
+    border-left:
+        3px solid #6dff9d;
+
+    background:
+        rgba(109,255,157,.05);
+
+    border-radius:
+        0 15px 15px 0;
+
+    color:#d6e7dc;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:50px 7%;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    color:#728379;
+
+}
+
+footer strong{
+
+    color:#6dff9d;
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+        translateY(50px);
+
+    transition:
+        1s ease;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+@media(max-width:950px){
+
+    .nav-links{
+
+        position:absolute;
+
+        top:75px;
+
+        left:0;
+
+        right:0;
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        padding:15px;
+
+        background:
+            rgba(3,15,9,.97);
+
+        backdrop-filter:blur(25px);
+
+        border:
+            1px solid rgba(255,255,255,.1);
+
+        border-radius:20px;
+
+    }
+
+    .nav-links.active{
+
+        display:flex;
+
+        animation:
+            menuOpen .4s ease;
+
+    }
+
+    @keyframes menuOpen{
+
+        from{
+
+            opacity:0;
+
+            transform:
+                translateY(-15px);
+
+        }
+
+        to{
+
+            opacity:1;
+
+            transform:
+                translateY(0);
+
+        }
+
+    }
+
+    .nav-links a{
+
+        padding:15px;
+
+    }
+
+    .nav-btn{
+
+        display:none;
+
+    }
+
+    .menu-btn{
+
+        display:block;
+
+    }
+
+    .hero{
+
+        background-attachment:scroll;
+
+    }
+
+    .intro-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .page-options{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .sir-section{
+
+        grid-template-columns:1fr;
+
+        max-width:700px;
+
+    }
+
+    .sir-photo-box{
+
+        max-width:450px;
+
+        margin:auto;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .navbar{
+
+        top:10px;
+
+        width:94%;
+
+        padding:
+            10px 12px;
+
+        border-radius:17px;
+
+    }
+
+    .logo{
+
+        font-size:20px;
+
+    }
+
+    .hero{
+
+        min-height:100svh;
+
+        padding:
+            145px 6% 65px;
+
+    }
+
+    .welcome-line{
+
+        font-size:17px;
+
+        letter-spacing:4px;
+
+    }
+
+    .himanshu-line{
+
+        font-size:
+            clamp(42px,14vw,65px);
+
+        letter-spacing:-2px;
+
+    }
+
+    .tabela-line{
+
+        font-size:
+            clamp(40px,13vw,60px);
+
+        letter-spacing:-2px;
+
+    }
+
+    .title-underline{
+
+        width:230px;
+
+    }
+
+    @keyframes underlineAppear{
+
+        from{
+
+            opacity:0;
+
+            width:0;
+
+        }
+
+        to{
+
+            opacity:1;
+
+            width:230px;
+
+        }
+
+    }
+
+    .hero-description{
+
+        font-size:15px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .btn{
+
+        text-align:center;
+
+        width:100%;
+
+    }
+
+    .section{
+
+        padding:
+            80px 6%;
+
+    }
+
+    .section-title{
+
+        margin-bottom:40px;
+
+    }
+
+    .text-card{
+
+        padding:28px;
+
+    }
+
+    .text-card h3{
+
+        font-size:31px;
+
+    }
+
+    .farm-card{
+
+        min-height:300px;
+
+    }
+
+    .farm-card img{
+
+        min-height:280px;
+
+    }
+
+    .page-options{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .option-card{
+
+        min-height:180px;
+
+    }
+
+    .sir-content h2{
+
+        font-size:40px;
+
+    }
+
+    .loader-logo{
+
+        font-size:32px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media(max-width:380px){
+
+    .hero{
+
+        padding-left:5%;
+
+        padding-right:5%;
+
+    }
+
+    .welcome-line{
+
+        font-size:14px;
+
+        letter-spacing:3px;
+
+    }
+
+    .himanshu-line{
+
+        font-size:40px;
+
+    }
+
+    .tabela-line{
+
+        font-size:38px;
+
+    }
+
+    .section-title h2{
+
+        font-size:32px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     LOADER
+====================================================== -->
+
+<div id="loader">
+
+    <div class="loader-box">
+
+        <div class="loader-logo">
+            Himanshu Tabela
+        </div>
+
+        <div class="loader-line"></div>
+
+        <div class="loader-text">
+            ENTERING THE FARM
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PARTICLES -->
+
+<div id="particles"></div>
+
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo page-link">
+
+        Himanshu
+        <span>Tabela</span>
+
+    </a>
+
+
+    <button
+        class="menu-btn"
+        id="menuBtn">
+
+        ☰
+
+    </button>
+
+
+    <ul
+        class="nav-links"
+        id="navLinks">
+
+
+        <li>
+
+            <a
+                href="index.html"
+                class="page-link">
+
+                Home
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="cows.html"
+                class="page-link">
+
+                🐄 Cows
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="products.html"
+                class="page-link">
+
+                🥛 Products
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="farm.html"
+                class="page-link">
+
+                🌾 Our Farm
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="Meet.html"
+                class="page-link">
+
+                👨‍🌾 About Sir
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="contact.html"
+                class="page-link">
+
+                📞 Contact
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+    <a
+        href="contact.html"
+        class="nav-btn page-link">
+
+        Contact Us
+
+    </a>
+
+</nav>
+
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <div class="tag">
+
+            PREMIUM CATTLE
+            •
+            FRESH MILK
+            •
+            RESPONSIBLE CARE
+
+        </div>
+
+
+        <!-- MAIN ANIMATED TITLE -->
+
+        <div class="hero-title">
+
+
+            <div class="title-glow"></div>
+
+
+            <span class="welcome-line">
+
+                WELCOME TO
+
+            </span>
+
+
+            <span class="himanshu-line">
+
+                HIMANSHU
+
+            </span>
+
+
+            <span class="tabela-line">
+
+                TABELA
+
+            </span>
+
+
+            <div class="title-underline"></div>
+
+
+        </div>
+
+
+        <p class="hero-description">
+
+            A modern cattle farm built around healthy
+            cattle, responsible care, clean surroundings
+            and the vision of Sir Himanshu.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+            <a
+                href="cows.html"
+                class="btn btn-primary page-link">
+
+                Explore Our Cows →
+
+            </a>
+
+
+            <a
+                href="Meet.html"
+                class="btn btn-outline page-link">
+
+                Meet Sir Himanshu
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FARM INTRODUCTION
+====================================================== -->
+
+<section class="section">
+
+
+    <div class="section-title reveal">
+
+        <span>
+            ABOUT OUR FARM
+        </span>
+
+        <h2>
+
+            Where Good Care
+            Meets Good Cattle
+
+        </h2>
+
+        <p>
+
+            Himanshu Tabela is being developed with
+            a focus on healthy cattle, proper feeding,
+            cleanliness and quality dairy products.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="intro-grid">
+
+
+        <div class="farm-card glass reveal">
+
+            <img
+            src="https://img.magnific.com/premium-photo/cow-standing-green-pasture-cow-field-livestock-grazing-countryside-farm-life-with-cattle-calves-cow-rural-landscape-ranch-with-grazing-bovine-dairy-cow_265223-182213.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Himanshu Tabela Farm">
+
+        </div>
+
+
+
+        <div class="text-card glass reveal">
+
+
+            <h3>
+
+                A Farm With
+                A Vision
+
+            </h3>
+
+
+            <p>
+
+                Our aim is to create a clean and
+                comfortable environment for cattle
+                while maintaining responsible farming
+                practices.
+
+            </p>
+
+
+            <p>
+
+                From feeding and hygiene to cattle
+                care and customer service, every part
+                of the farm is planned with attention
+                and responsibility.
+
+            </p>
+
+
+            <a
+                href="farm.html"
+                class="btn btn-primary page-link">
+
+                Explore Our Farm →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PAGE OPTIONS
+====================================================== -->
+
+<section class="section">
+
+
+    <div class="section-title reveal">
+
+        <span>
+            EXPLORE HIMANSHU TABELA
+        </span>
+
+        <h2>
+
+            Everything You Need
+            In One Place
+
+        </h2>
+
+        <p>
+
+            Select a section to explore different
+            parts of our cattle farm.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="page-options">
+
+
+        <!-- COWS -->
+
+        <a
+            href="cows.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                🐄
+            </div>
+
+            <h3>
+                About Our Cows
+            </h3>
+
+            <p>
+
+                Explore cattle breeds,
+                their care, feeding and
+                important information.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- PRODUCTS -->
+
+        <a
+            href="products.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                🥛
+            </div>
+
+            <h3>
+                Dairy Products
+            </h3>
+
+            <p>
+
+                Discover milk and other
+                dairy products available
+                from our farm.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- FARM -->
+
+        <a
+            href="farm.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                🌾
+            </div>
+
+            <h3>
+                Our Farm
+            </h3>
+
+            <p>
+
+                Learn about the farm,
+                facilities and daily
+                cattle care.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- ABOUT -->
+
+        <a
+            href="Meet.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                About Sir Himanshu
+            </h3>
+
+            <p>
+
+                Learn about the person
+                behind the vision of
+                Himanshu Tabela.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- CONTACT -->
+
+        <a
+            href="contact.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                📞
+            </div>
+
+            <h3>
+                Contact Us
+            </h3>
+
+            <p>
+
+                Get in touch with us for
+                enquiries, products and
+                farm information.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+
+        <!-- HOME -->
+
+        <a
+            href="index.html"
+            class="option-card reveal page-link">
+
+            <div class="option-icon">
+                🏠
+            </div>
+
+            <h3>
+                Back To Home
+            </h3>
+
+            <p>
+
+                Return to the main
+                Himanshu Tabela homepage.
+
+            </p>
+
+            <div class="arrow">
+                →
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     SIR HIMANSHU
+====================================================== -->
+
+<section class="section">
+
+
+    <div class="sir-section">
+
+
+        <div class="sir-photo-box reveal">
+
+
+            <img
+                src = "C:\Users\intel\Pictures\Screenshots\Screenshot 2026-10-04 104910.png"
+                alt="Sir Himanshu">
+
+
+        </div>
+
+
+
+        <div class="sir-content reveal">
+
+
+            <div class="tag">
+
+                THE PERSON BEHIND
+                THE VISION
+
+            </div>
+
+
+            <h2>
+
+                Meet Sir Himanshu
+
+            </h2>
+
+
+            <p>
+
+                Sir Himanshu is the person behind
+                the vision of this cattle farm.
+                His goal is to develop a responsible
+                and well-managed environment for cattle.
+
+            </p>
+
+
+            <p>
+
+                Himanshu Tabela represents a commitment
+                to proper cattle care, cleanliness,
+                quality and trust.
+
+            </p>
+
+
+            <div class="quote">
+
+                “Healthy cattle, responsible care
+                and honest service are the foundation
+                of our farm.”
+
+            </div>
+
+
+            <br>
+
+
+            <a
+                href="about.html"
+                class="btn btn-primary page-link">
+
+                Know More About Sir →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <p>
+
+        © 2026
+        <strong>Himanshu Tabela</strong>.
+        All Rights Reserved.
+
+    </p>
+
+    <br>
+
+    <p>
+
+        Premium Cattle
+        •
+        Responsible Care
+        •
+        Quality
+
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        const loader =
+            document.getElementById("loader");
+
+        loader.style.opacity="0";
+
+        loader.style.visibility="hidden";
+
+    },1800);
+
+});
+
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+
+for(let i=0;i<55;i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left =
+        Math.random()*100+"%";
+
+    particle.style.animationDuration =
+        (5+Math.random()*10)+"s";
+
+    particle.style.animationDelay =
+        Math.random()*8+"s";
+
+    const size =
+        2+Math.random()*4;
+
+    particle.style.width =
+        size+"px";
+
+    particle.style.height =
+        size+"px";
+
+    particleContainer.appendChild(
+        particle
+    );
+
+}
+
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuBtn.addEventListener(
+    "click",
+    function(){
+
+        navLinks.classList.toggle(
+            "active"
+        );
+
+
+        if(
+            navLinks.classList.contains(
+                "active"
+            )
+        ){
+
+            menuBtn.innerHTML="✕";
+
+        }
+
+        else{
+
+            menuBtn.innerHTML="☰";
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   CLOSE MOBILE MENU
+========================================================= */
+
+document
+.querySelectorAll(".page-link")
+.forEach(function(link){
+
+    link.addEventListener(
+        "click",
+        function(){
+
+            navLinks.classList.remove(
+                "active"
+            );
+
+            menuBtn.innerHTML="☰";
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   RIPPLE CLICK EFFECT
+========================================================= */
+
+document
+.querySelectorAll(".page-link")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(e){
+
+            const rect =
+                button.getBoundingClientRect();
+
+
+            const ripple =
+                document.createElement("span");
+
+            ripple.className="ripple";
+
+
+            const size =
+                Math.max(
+                    rect.width,
+                    rect.height
+                );
+
+
+            ripple.style.width =
+                size+"px";
+
+            ripple.style.height =
+                size+"px";
+
+
+            ripple.style.left =
+                (
+                    e.clientX -
+                    rect.left -
+                    size/2
+                )+"px";
+
+
+            ripple.style.top =
+                (
+                    e.clientY -
+                    rect.top -
+                    size/2
+                )+"px";
+
+
+            button.appendChild(
+                ripple
+            );
+
+
+            setTimeout(
+                function(){
+
+                    ripple.remove();
+
+                },
+                600
+            );
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(function(element){
+
+    observer.observe(element);
+
+});
+
+
+
+/* =========================================================
+   DESKTOP MOUSE PARALLAX
+========================================================= */
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(
+            window.innerWidth > 950
+        ){
+
+            const x =
+                (
+                    e.clientX /
+                    window.innerWidth -
+                    .5
+                ) * 8;
+
+
+            const y =
+                (
+                    e.clientY /
+                    window.innerHeight -
+                    .5
+                ) * 8;
+
+
+            const hero =
+                document.querySelector(
+                    ".hero-content"
+                );
+
+
+            hero.style.transform =
+                `translate(${x}px,${y}px)`;
+
+        }
+
+    }
+);
+
+
+</script>
+
+</body>
+
+</html>
