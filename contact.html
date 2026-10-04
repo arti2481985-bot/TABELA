@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | Tabela</title>
+
+<style>
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07130d;
+    color: white;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(46, 204, 113, 0.12);
+    filter: blur(90px);
+    top: -180px;
+    left: -150px;
+    animation: moveGlow 9s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(39, 174, 96, 0.10);
+    filter: blur(90px);
+    right: -150px;
+    bottom: -150px;
+    animation: moveGlow2 10s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes moveGlow {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(160px, 120px);
+    }
+}
+
+@keyframes moveGlow2 {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-130px, -100px);
+    }
+}
+
+/* =========================
+   CIRCLES
+========================= */
+
+.circle {
+    position: fixed;
+    border: 1px solid rgba(98, 255, 157, 0.16);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.circle1 {
+    width: 180px;
+    height: 180px;
+    top: 12%;
+    left: 6%;
+    animation: rotateCircle 15s linear infinite;
+}
+
+.circle2 {
+    width: 280px;
+    height: 280px;
+    right: 5%;
+    top: 18%;
+    animation: rotateCircle 22s linear infinite reverse;
+}
+
+.circle3 {
+    width: 120px;
+    height: 120px;
+    bottom: 10%;
+    left: 15%;
+    animation: floatCircle 6s ease-in-out infinite;
+}
+
+.circle4 {
+    width: 200px;
+    height: 200px;
+    bottom: 8%;
+    right: 12%;
+    animation: floatCircle 8s ease-in-out infinite reverse;
+}
+
+@keyframes rotateCircle {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatCircle {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+.cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #55ff91;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px #55ff91;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(85, 255, 145, 0.75);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.2s ease,
+        height 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.cursor-ring.hover {
+    width: 65px;
+    height: 65px;
+    border-color: #55ff91;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    animation: navIntro 0.9s ease forwards;
+}
+
+@keyframes navIntro {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #66ff9c;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #d9fce5;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #55ff91;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 65px 20px 40px;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 82px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    animation: titleIntro 1s ease forwards;
+}
+
+.hero h1 span {
+    color: #55ff91;
+}
+
+.hero p {
+    margin-top: 18px;
+    color: #b8d6c3;
+    font-size: 17px;
+    animation: subtitleIntro 1s ease 0.25s both;
+}
+
+@keyframes titleIntro {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes subtitleIntro {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   CONTACT AREA
+========================= */
+
+.contact-container {
+    width: min(1100px, 90%);
+    margin: 35px auto 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+/* =========================
+   BOXES
+========================= */
+
+.contact-box {
+    position: relative;
+    padding: 35px;
+    min-height: 210px;
+
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(120,255,170,0.18);
+    border-radius: 25px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(80px) scale(0.92);
+    animation: boxIntro 0.9s cubic-bezier(.17,.67,.25,1.2) forwards;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+/* Individual intro delays */
+
+.contact-box:nth-child(1) {
+    animation-delay: 0.45s;
+}
+
+.contact-box:nth-child(2) {
+    animation-delay: 0.65s;
+}
+
+.contact-box:nth-child(3) {
+    animation-delay: 0.85s;
+}
+
+.contact-box:nth-child(4) {
+    animation-delay: 1.05s;
+}
+
+@keyframes boxIntro {
+    0% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.92);
+        filter: blur(8px);
+    }
+
+    70% {
+        transform: translateY(-8px) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.contact-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(85,255,145,0.65);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        0 0 30px rgba(85,255,145,0.08);
+}
+
+/* Animated shine */
+
+.contact-box::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(85,255,145,0.08);
+    top: -90px;
+    right: -90px;
+    transition: 0.5s;
+}
+
+.contact-box:hover::before {
+    width: 280px;
+    height: 280px;
+}
+
+/* =========================
+   ICON CIRCLE
+========================= */
+
+.icon-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 27px;
+
+    background: rgba(85,255,145,0.08);
+    border: 1px solid rgba(85,255,145,0.4);
+
+    margin-bottom: 20px;
+
+    animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.contact-box h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.contact-box p {
+    color: #b7cfc0;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* =========================
+   CONTACT BUTTON
+========================= */
+
+.contact-button {
+    display: inline-block;
+    margin-top: 18px;
+
+    padding: 11px 20px;
+
+    border-radius: 50px;
+    border: 1px solid rgba(85,255,145,0.5);
+
+    color: #72ffa6;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.contact-button:hover {
+    background: #55ff91;
+    color: #07130d;
+    box-shadow: 0 0 25px rgba(85,255,145,0.4);
+}
+
+/* =========================
+   MESSAGE BOX
+========================= */
+
+.message-box {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+
+    animation-delay: 1.25s;
+}
+
+.message-box h2 {
+    font-size: 30px;
+}
+
+.message-box p {
+    max-width: 650px;
+    margin: 12px auto;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #769083;
+    font-size: 13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    body {
+        cursor: auto;
+    }
+
+    .cursor,
+    .cursor-ring {
+        display: none;
+    }
+
+    nav {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding-top: 45px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        width: 88%;
+    }
+
+    .message-box {
+        grid-column: auto;
+    }
+
+    .contact-box {
+        min-height: 190px;
+        padding: 28px;
+    }
+
+    .circle1,
+    .circle2,
+    .circle3,
+    .circle4 {
+        opacity: 0.45;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     BACKGROUND CIRCLES
+========================= -->
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+<div class="circle circle4"></div>
+
+<!-- =========================
+     CUSTOM CURSOR
+========================= -->
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        TABELA
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cows.html">Cows</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="Meet.html">Meet Sir</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <h1>
+        CONTACT <span>US</span>
+    </h1>
+
+    <p>
+        Have a question? Get in touch with Tabela.
+    </p>
+
+</section>
+
+<!-- =========================
+     CONTACT BOXES
+========================= -->
+
+<section class="contact-container">
+
+    <!-- PHONE -->
+
+<div class="contact-box hover-target">
+
+    <div class="icon-circle">
+        ☎
+    </div>
+
+    <h2>Call Us</h2>
+
+    <p>
+        Speak directly with us for enquiries,
+        farm information and other details.
+    </p>
+
+    <a href="tel:+917004598312" class="contact-button">
+        Call Now
+    </a>
+
+</div>
+
+
+<!-- WHATSAPP -->
+
+<div class="contact-box hover-target">
+
+    <div class="icon-circle">
+        💬
+    </div>
+
+    <h2>WhatsApp</h2>
+
+    <p>
+        Chat with us directly on WhatsApp
+        for enquiries and farm information.
+    </p>
+
+    <a href="https://wa.me/917004598312" class="contact-button" target="_blank">
+        Chat on WhatsApp
+    </a>
+
+</div>
+
+
+<!-- LOCATION -->
+
+<div class="contact-box hover-target">
+
+    <div class="icon-circle">
+        📍
+    </div>
+
+    <h2>Visit Our Farm</h2>
+
+    <p>
+        Come and visit Tabela to see our cows,
+        farm environment and dairy activities.
+    </p>
+
+    <a href="#" class="contact-button">
+        View Location
+    </a>
+
+</div>
+
+
+<!-- TIMINGS -->
+
+<div class="contact-box hover-target">
+
+    <div class="icon-circle">
+        ◷
+    </div>
+
+    <h2>Farm Timings</h2>
+
+    <p>
+        Monday – Sunday<br>
+        6:00 AM – 7:00 PM
+    </p>
+
+    <span class="contact-button">
+        Open Every Day
+    </span>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div class="contact-box message-box hover-target">
+
+    <div class="icon-circle" style="margin-left:auto;margin-right:auto;">
+        🐄
+    </div>
+
+    <h2>Let's Connect</h2>
+
+    <p>
+        Whether you want to know about our cows,
+        dairy products or the farm, we are here to help.
+    </p>
+
+    <a href="https://wa.me/917004598312"
+       class="contact-button"
+       target="_blank">
+        Contact Tabela
+    </a>
+
+</div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    © 2026 Tabela — All Rights Reserved
+</footer>
+
+
+<script>
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+const cursor = document.querySelector(".cursor");
+const ring = document.querySelector(".cursor-ring");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let ringX = 0;
+let ringY = 0;
+
+document.addEventListener("mousemove", function(e) {
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+
+});
+
+
+function animateCursor() {
+
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+
+    ring.style.left = ringX + "px";
+    ring.style.top = ringY + "px";
+
+    requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+
+/* =========================
+   CURSOR HOVER EFFECT
+========================= */
+
+const hoverTargets = document.querySelectorAll(
+    "a, .contact-box, .icon-circle"
+);
+
+hoverTargets.forEach(function(target) {
+
+    target.addEventListener("mouseenter", function() {
+        ring.classList.add("hover");
+    });
+
+    target.addEventListener("mouseleave", function() {
+        ring.classList.remove("hover");
+    });
+
+});
+
+
+/* =========================
+   CLICK RIPPLE
+========================= */
+
+document.addEventListener("click", function(e) {
+
+    const ripple = document.createElement("div");
+
+    ripple.style.position = "fixed";
+    ripple.style.left = e.clientX + "px";
+    ripple.style.top = e.clientY + "px";
+    ripple.style.width = "10px";
+    ripple.style.height = "10px";
+    ripple.style.border = "1px solid #55ff91";
+    ripple.style.borderRadius = "50%";
+    ripple.style.pointerEvents = "none";
+    ripple.style.transform = "translate(-50%, -50%)";
+    ripple.style.zIndex = "9997";
+
+    document.body.appendChild(ripple);
+
+    ripple.animate(
+        [
+            {
+                width: "10px",
+                height: "10px",
+                opacity: 1
+            },
+            {
+                width: "90px",
+                height: "90px",
+                opacity: 0
+            }
+        ],
+        {
+            duration: 600,
+            easing: "ease-out"
+        }
+    );
+
+    setTimeout(function() {
+        ripple.remove();
+    }, 600);
+
+});
+
+</script>
+
+</body>
+</html>
+
