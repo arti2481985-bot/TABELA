@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cows | Sir Himanshu's Tabela</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #06110a;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   CUSTOM CURSOR
+===================================================== */
+
+.cursor-dot {
+    position: fixed;
+
+    width: 7px;
+    height: 7px;
+
+    background: #ffd166;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 10px #ffd166,
+        0 0 20px rgba(255,209,102,0.7);
+}
+
+
+.cursor-ring {
+    position: fixed;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255,209,102,0.75);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 99998;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        width 0.25s ease,
+        height 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.cursor-trail {
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: rgba(116,190,105,0.35);
+
+    pointer-events: none;
+
+    z-index: 99990;
+
+    transform: translate(-50%, -50%);
+
+    filter: blur(2px);
+
+    transition: opacity 0.2s ease;
+}
+
+
+/* Cursor when hovering interactive items */
+
+body.cursor-hover .cursor-ring {
+
+    width: 65px;
+    height: 65px;
+
+    border-color: #ffd166;
+
+    background:
+        rgba(255,209,102,0.06);
+
+    box-shadow:
+        0 0 20px rgba(255,209,102,0.2);
+}
+
+
+body.cursor-hover .cursor-dot {
+
+    width: 5px;
+    height: 5px;
+}
+
+
+/* Hide custom cursor on touch devices */
+
+@media (hover: none) {
+
+    .cursor-dot,
+    .cursor-ring,
+    .cursor-trail {
+        display: none;
+    }
+
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(61,151,76,0.12);
+
+    filter: blur(80px);
+
+    top: 80px;
+    left: -150px;
+
+    z-index: -2;
+
+    animation:
+        backgroundFloat1 9s ease-in-out infinite;
+}
+
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,193,7,0.07);
+
+    filter: blur(80px);
+
+    right: -130px;
+    bottom: 50px;
+
+    z-index: -2;
+
+    animation:
+        backgroundFloat2 11s ease-in-out infinite;
+}
+
+
+@keyframes backgroundFloat1 {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(45px);
+    }
+
+}
+
+
+@keyframes backgroundFloat2 {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-45px);
+    }
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 18px 7%;
+
+    background:
+        rgba(5,20,11,0.82);
+
+    backdrop-filter:
+        blur(15px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+
+    animation:
+        headerAnimation 0.8s ease;
+}
+
+
+@keyframes headerAnimation {
+
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.logo {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: white;
+
+    white-space: nowrap;
+}
+
+
+.logo span {
+    color: #ffd166;
+}
+
+
+nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+nav a {
+
+    position: relative;
+
+    color: #dce9de;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.3s ease;
+}
+
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+
+    height: 2px;
+
+    left: 50%;
+
+    bottom: -7px;
+
+    background: #ffd166;
+
+    transition:
+        width 0.3s ease,
+        left 0.3s ease;
+}
+
+
+nav a:hover {
+
+    color: #ffd166;
+}
+
+
+nav a:hover::after {
+
+    width: 100%;
+
+    left: 0;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    padding: 80px 20px;
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    animation:
+        heroIn 1.2s ease;
+}
+
+
+@keyframes heroIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(45px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.small-title {
+
+    color: #ffd166;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(55px, 9vw, 100px);
+
+    font-weight: 900;
+
+    line-height: 0.95;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #8ed99a,
+            #ffd166,
+            #ffffff
+        );
+
+    background-size: 250%;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+    animation:
+        titleShine 5s linear infinite;
+}
+
+
+@keyframes titleShine {
+
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 250%;
+    }
+
+}
+
+
+.hero p {
+
+    max-width: 650px;
+
+    margin:
+        25px auto 0;
+
+    color: #aebdaf;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   FLOATING COWS
+===================================================== */
+
+.floating-cow {
+
+    position: absolute;
+
+    opacity: 0.13;
+
+    font-size: 55px;
+
+    pointer-events: none;
+
+    animation:
+        floatingCow 5s ease-in-out infinite;
+}
+
+
+.cow-one {
+
+    left: 8%;
+
+    top: 25%;
+}
+
+
+.cow-two {
+
+    right: 9%;
+
+    top: 48%;
+
+    animation-delay: 1.5s;
+}
+
+
+.cow-three {
+
+    left: 20%;
+
+    bottom: 10%;
+
+    font-size: 35px;
+
+    animation-delay: 0.8s;
+}
+
+
+@keyframes floatingCow {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-25px)
+            rotate(5deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+
+    text-align: center;
+
+    margin:
+        30px 20px 45px;
+
+    animation:
+        sectionIn 1s ease;
+}
+
+
+@keyframes sectionIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.section-heading h2 {
+
+    font-size: 40px;
+
+    color: #effff0;
+}
+
+
+.section-heading p {
+
+    color: #819483;
+
+    margin-top: 10px;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   COW GRID
+===================================================== */
+
+.cow-container {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 30px;
+
+    padding-bottom: 75px;
+}
+
+
+/* =====================================================
+   COW CARD
+===================================================== */
+
+.cow-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid rgba(255,255,255,0.11);
+
+    border-radius: 22px;
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.4s ease,
+        border 0.4s ease,
+        box-shadow 0.4s ease;
+
+    animation:
+        cardIn 0.8s ease both;
+}
+
+
+.cow-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.cow-card:nth-child(2) {
+    animation-delay: 0.10s;
+}
+
+.cow-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.cow-card:nth-child(4) {
+    animation-delay: 0.20s;
+}
+
+.cow-card:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.cow-card:nth-child(6) {
+    animation-delay: 0.30s;
+}
+
+.cow-card:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+.cow-card:nth-child(8) {
+    animation-delay: 0.40s;
+}
+
+.cow-card:nth-child(9) {
+    animation-delay: 0.45s;
+}
+
+.cow-card:nth-child(10) {
+    animation-delay: 0.50s;
+}
+
+
+@keyframes cardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.cow-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(255,209,102,0.45);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.45),
+        0 0 25px rgba(82,174,93,0.12);
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.image-box {
+
+    position: relative;
+
+    height: 310px;
+
+    overflow: hidden;
+}
+
+
+.image-box::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba(0,0,0,0.5)
+        );
+
+    pointer-events: none;
+}
+
+
+.image-box img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.cow-card:hover
+.image-box img {
+
+    transform:
+        scale(1.07);
+}
+
+
+/* Breed number */
+
+.breed-number {
+
+    position: absolute;
+
+    z-index: 2;
+
+    top: 15px;
+
+    left: 15px;
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    color:
+        #ffd166;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.card-content {
+
+    padding:
+        24px;
+}
+
+
+.card-content h3 {
+
+    font-size:
+        29px;
+
+    color:
+        #f2fff3;
+
+    margin-bottom:
+        8px;
+}
+
+
+.location {
+
+    color:
+        #ffd166;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        15px;
+}
+
+
+.description {
+
+    color:
+        #aebcaf;
+
+    line-height:
+        1.7;
+
+    font-size:
+        15px;
+
+    min-height:
+        75px;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.price-box {
+
+    position: relative;
+
+    overflow: hidden;
+
+    margin-top:
+        20px;
+
+    padding:
+        17px;
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(255,209,102,0.07);
+
+    border:
+        1px solid
+        rgba(255,209,102,0.22);
+
+    transition:
+        background 0.3s ease,
+        border 0.3s ease;
+}
+
+
+.cow-card:hover
+.price-box {
+
+    background:
+        rgba(255,209,102,0.11);
+
+    border-color:
+        rgba(255,209,102,0.38);
+}
+
+
+.price-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    right: -45px;
+
+    top: -45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,209,102,0.08);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.cow-card:hover
+.price-box::before {
+
+    transform:
+        scale(1.5);
+}
+
+
+.price-label {
+
+    color:
+        #89998d;
+
+    font-size:
+        11px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+.price {
+
+    position: relative;
+
+    margin-top:
+        6px;
+
+    color:
+        #ffd166;
+
+    font-size:
+        23px;
+
+    font-weight:
+        bold;
+}
+
+
+/* =====================================================
+   INFORMATION BOX
+===================================================== */
+
+.info-section {
+
+    width:
+        90%;
+
+    max-width:
+        1000px;
+
+    margin:
+        10px auto 75px;
+
+    padding:
+        32px;
+
+    text-align:
+        center;
+
+    border-radius:
+        22px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    backdrop-filter:
+        blur(10px);
+
+    animation:
+        sectionIn 1s ease;
+}
+
+
+.info-section h2 {
+
+    color:
+        #ffd166;
+
+    margin-bottom:
+        14px;
+
+    font-size:
+        25px;
+}
+
+
+.info-section p {
+
+    color:
+        #aab9ad;
+
+    line-height:
+        1.8;
+
+    font-size:
+        14px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    text-align:
+        center;
+
+    padding:
+        38px 20px;
+
+    background:
+        #030906;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    color:
+        #7f9083;
+}
+
+
+.farm-name {
+
+    color:
+        white;
+
+    font-size:
+        21px;
+
+    font-weight:
+        bold;
+
+    margin-bottom:
+        8px;
+}
+
+
+.creator {
+
+    margin-top:
+        15px;
+
+    color:
+        #ffd166;
+
+    font-weight:
+        bold;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    header {
+
+        flex-direction:
+            column;
+
+        gap:
+            15px;
+
+    }
+
+
+    nav {
+
+        flex-wrap:
+            wrap;
+
+        justify-content:
+            center;
+
+        gap:
+            14px;
+
+    }
+
+
+    .cow-container {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .logo {
+
+        font-size:
+            18px;
+
+    }
+
+
+    nav a {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .hero {
+
+        min-height:
+            430px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            52px;
+
+    }
+
+
+    .hero p {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .image-box {
+
+        height:
+            260px;
+
+    }
+
+
+    .card-content h3 {
+
+        font-size:
+            25px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     CUSTOM CURSOR
+===================================================== -->
+
+<div class="cursor-dot"></div>
+
+<div class="cursor-ring"></div>
+
+<div class="cursor-trail"></div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+
+        🐄 Sir Himanshu's
+        <span>Tabela</span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="cows.html">
+            Cows
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="farm.html">
+            Farm
+        </a>
+
+        <a href="Meet.html">
+            Meet Sir
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+
+    <div class="floating-cow cow-one">
+        🐄
+    </div>
+
+
+    <div class="floating-cow cow-two">
+        🐄
+    </div>
+
+
+    <div class="floating-cow cow-three">
+        🐄
+    </div>
+
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            SIR HIMANSHU'S TABELA
+        </div>
+
+
+        <h1>
+            OUR COWS
+        </h1>
+
+
+        <p>
+
+            Explore our collection of
+            beautiful Indian cattle breeds,
+            their origin, characteristics
+            and approximate prices.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SECTION HEADING
+===================================================== -->
+
+<section class="section-heading">
+
+    <h2>
+        Our Cow Breeds
+    </h2>
+
+    <p>
+        10 famous Indian indigenous cattle breeds
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     COW CARDS
+===================================================== -->
+
+<section class="cow-container">
+
+
+
+<!-- =====================================================
+     GIR
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Gir%2001.JPG"
+        alt="Gir Cow">
+
+        <div class="breed-number">
+            #01
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Gir Cow
+        </h3>
+
+
+        <div class="location">
+            📍 Gujarat
+        </div>
+
+
+        <div class="description">
+
+            Gir cattle are famous for their
+            distinctive forehead, long ears,
+            calm nature and good milk
+            production.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹45,000 – ₹2,00,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SAHIWAL
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Sahiwala%2001.JPG"
+        alt="Sahiwal Cow">
+
+        <div class="breed-number">
+            #02
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Sahiwal Cow
+        </h3>
+
+
+        <div class="location">
+            📍 Punjab Region
+        </div>
+
+
+        <div class="description">
+
+            Sahiwal is a popular milch breed
+            known for good milk production,
+            heat tolerance and calm
+            temperament.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹40,000 – ₹1,20,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RED SINDHI
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Sindhi%20Cow%20at%20Pakistan.jpg"
+        alt="Red Sindhi Cow">
+
+        <div class="breed-number">
+            #03
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Red Sindhi
+        </h3>
+
+
+        <div class="location">
+            📍 Sindh Region
+        </div>
+
+
+        <div class="description">
+
+            Red Sindhi cattle have a
+            reddish coat and are well
+            adapted to hot climates
+            and Indian conditions.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹38,000 – ₹70,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     THARPARKAR
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Tharparkar%2002.JPG"
+        alt="Tharparkar Cow">
+
+        <div class="breed-number">
+            #04
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Tharparkar
+        </h3>
+
+
+        <div class="location">
+            📍 Rajasthan
+        </div>
+
+
+        <div class="description">
+
+            Tharparkar cattle are generally
+            white or light grey and are
+            well suited to hot and dry
+            environments.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹35,000 – ₹80,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RATHI
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Rathi%2001.JPG"
+        alt="Rathi Cow">
+
+        <div class="breed-number">
+            #05
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Rathi
+        </h3>
+
+
+        <div class="location">
+            📍 Rajasthan
+        </div>
+
+
+        <div class="description">
+
+            Rathi cattle are an important
+            dairy breed of Rajasthan and
+            are known for useful milk
+            production.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹45,000 – ₹1,20,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     KANKREJ
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Kankrej%2001.JPG"
+        alt="Kankrej Cow">
+
+        <div class="breed-number">
+            #06
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Kankrej
+        </h3>
+
+
+        <div class="location">
+            📍 Gujarat & Rajasthan
+        </div>
+
+
+        <div class="description">
+
+            Kankrej is a strong and hardy
+            indigenous breed used for
+            milk production and traditional
+            farm work.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹50,000 – ₹1,50,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ONGOLE
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Ongole%20cattle%20of%20Andhra%20Pradesh%2014%2035%2025%20843000.jpeg"
+        alt="Ongole Cattle">
+
+        <div class="breed-number">
+            #07
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Ongole
+        </h3>
+
+
+        <div class="location">
+            📍 Andhra Pradesh
+        </div>
+
+
+        <div class="description">
+
+            Ongole cattle are large,
+            powerful and hardy animals
+            traditionally known for
+            strength and endurance.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹60,000 – ₹1,50,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HARIANA
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Hariana%20cattle.jpg"
+        alt="Hariana Cattle">
+
+        <div class="breed-number">
+            #08
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Hariana
+        </h3>
+
+
+        <div class="location">
+            📍 Haryana
+        </div>
+
+
+        <div class="description">
+
+            Hariana cattle are hardy
+            Indian cattle used for milk
+            production as well as
+            agricultural work.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹35,000 – ₹80,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DEONI
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Deoni%2001.JPG"
+        alt="Deoni Cow">
+
+        <div class="breed-number">
+            #09
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Deoni
+        </h3>
+
+
+        <div class="location">
+            📍 Maharashtra
+        </div>
+
+
+        <div class="description">
+
+            Deoni is a dual-purpose
+            indigenous breed valued
+            for milk production and
+            agricultural strength.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹40,000 – ₹1,00,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HALLIKAR
+===================================================== -->
+
+<div class="cow-card interactive">
+
+    <div class="image-box">
+
+        <img
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Hallikar%20cow%20in%20tumminakatti%20581119.jpg"
+        alt="Hallikar Cow">
+
+        <div class="breed-number">
+            #10
+        </div>
+
+    </div>
+
+
+    <div class="card-content">
+
+        <h3>
+            Hallikar
+        </h3>
+
+
+        <div class="location">
+            📍 Karnataka
+        </div>
+
+
+        <div class="description">
+
+            Hallikar is a strong indigenous
+            breed particularly known for
+            endurance and traditional
+            agricultural work.
+
+        </div>
+
+
+        <div class="price-box">
+
+            <div class="price-label">
+                Approximate Price
+            </div>
+
+            <div class="price">
+                ₹40,000 – ₹1,00,000
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PRICE INFORMATION
+===================================================== -->
+
+<section class="info-section">
+
+    <h2>
+        💰 Cow Price Information
+    </h2>
+
+
+    <p>
+
+        The prices shown on this page are
+        approximate market ranges. Actual
+        prices may vary according to age,
+        milk production, health, pregnancy,
+        breed purity, pedigree, location
+        and demand.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="farm-name">
+        🐄 Sir Himanshu's Tabela
+    </div>
+
+
+    <div>
+        Healthy Cattle • Quality Dairy • Better Farming
+    </div>
+
+
+    <div class="creator">
+        Website Created by Tanishk Kumar
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     CURSOR JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* ============================================
+   CURSOR ELEMENTS
+============================================ */
+
+const dot =
+    document.querySelector(".cursor-dot");
+
+const ring =
+    document.querySelector(".cursor-ring");
+
+const trail =
+    document.querySelector(".cursor-trail");
+
+
+/* ============================================
+   MOUSE POSITIONS
+============================================ */
+
+let mouseX = 0;
+let mouseY = 0;
+
+let dotX = 0;
+let dotY = 0;
+
+let ringX = 0;
+let ringY = 0;
+
+let trailX = 0;
+let trailY = 0;
+
+
+/* ============================================
+   GET MOUSE POSITION
+============================================ */
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+    }
+);
+
+
+/* ============================================
+   SMOOTH CURSOR ANIMATION
+============================================ */
+
+function animateCursor() {
+
+    dotX +=
+        (mouseX - dotX) * 0.35;
+
+    dotY +=
+        (mouseY - dotY) * 0.35;
+
+
+    ringX +=
+        (mouseX - ringX) * 0.16;
+
+    ringY +=
+        (mouseY - ringY) * 0.16;
+
+
+    trailX +=
+        (mouseX - trailX) * 0.08;
+
+    trailY +=
+        (mouseY - trailY) * 0.08;
+
+
+    dot.style.left =
+        dotX + "px";
+
+    dot.style.top =
+        dotY + "px";
+
+
+    ring.style.left =
+        ringX + "px";
+
+    ring.style.top =
+        ringY + "px";
+
+
+    trail.style.left =
+        trailX + "px";
+
+    trail.style.top =
+        trailY + "px";
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+
+}
+
+
+animateCursor();
+
+
+/* ============================================
+   INTERACTIVE ELEMENTS
+============================================ */
+
+const interactiveElements =
+    document.querySelectorAll(
+        "a, .cow-card, .price-box, .breed-number"
+    );
+
+
+interactiveElements.forEach(
+    function(element) {
+
+        element.addEventListener(
+            "mouseenter",
+            function() {
+
+                document.body.classList.add(
+                    "cursor-hover"
+                );
+
+            }
+        );
+
+
+        element.addEventListener(
+            "mouseleave",
+            function() {
+
+                document.body.classList.remove(
+                    "cursor-hover"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* ============================================
+   CURSOR HIDE WHEN LEAVING PAGE
+============================================ */
+
+document.addEventListener(
+    "mouseleave",
+    function() {
+
+        dot.style.opacity = "0";
+
+        ring.style.opacity = "0";
+
+        trail.style.opacity = "0";
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseenter",
+    function() {
+
+        dot.style.opacity = "1";
+
+        ring.style.opacity = "1";
+
+        trail.style.opacity = "1";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
+
